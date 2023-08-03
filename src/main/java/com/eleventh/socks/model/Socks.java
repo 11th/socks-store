@@ -10,7 +10,7 @@ import java.util.Objects;
 @Setter
 @Entity
 @Table(name = "socks")
-public class Store {
+public class Socks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,12 +18,20 @@ public class Store {
     private int cottonPart;
     private int quantity;
 
+    public void increaseQuantity(int quantity) {
+        this.quantity += quantity;
+    }
+
+    public void decreaseQuantity(int quantity) {
+        this.quantity -= quantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Store store = (Store) o;
-        return id == store.id;
+        Socks socks = (Socks) o;
+        return id == socks.id;
     }
 
     @Override
