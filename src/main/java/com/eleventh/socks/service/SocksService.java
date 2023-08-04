@@ -84,8 +84,8 @@ public class SocksService {
             if (socksDto.getColor() == null) {
                 stringBuilder.append("Color is empty; ");
             }
-            if (socksDto.getCottonPart() <= 0) {
-                stringBuilder.append("Cotton part should be greater then 0; ");
+            if (socksDto.getCottonPart() < 0) {
+                stringBuilder.append("Cotton part should not be less then 0; ");
             }
             if (socksDto.getQuantity() <= 0) {
                 stringBuilder.append("Quantity should be greater then 0; ");
