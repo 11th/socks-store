@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  db_postgres:
+    image: postgres:14.7-alpine
+    container_name: db_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: socks
+      POSTGRES_USER: socks
+      POSTGRES_DB: socksStore
+
+  app_spring:
+    image: app_spring
+    container_name: app_spring
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db_postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_postgres/socksStore
+      - SPRING_DATASOURCE_USERNAME=socks
+      - SPRING_DATASOURCE_PASSWORD=socks
