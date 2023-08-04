@@ -18,20 +18,21 @@ public class SocksController {
     }
 
     @PostMapping("/income")
-    public ResponseEntity<?> income(@RequestBody SocksDto socks) {
-        socksService.income(socks);
+    public ResponseEntity<?> doIncome(@RequestBody SocksDto socks) {
+        socksService.doIncome(socks);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/outcome")
-    public ResponseEntity<?> outcome(@RequestBody SocksDto socks) {
-        socksService.outcome(socks);
+    public ResponseEntity<?> doOutcome(@RequestBody SocksDto socks) {
+        socksService.doOutcome(socks);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
     public ResponseEntity<Collection<SocksDto>> findWithParams(@PathParam("color") String color,
+                                                               @PathParam("operation") String operation,
                                                                @PathParam("cottonPart") Integer cottonPart) {
-        return ResponseEntity.ok(socksService.findWithParams(color, cottonPart));
+        return ResponseEntity.ok(socksService.findWithParams(color, operation, cottonPart));
     }
 }

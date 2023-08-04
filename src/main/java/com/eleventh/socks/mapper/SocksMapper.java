@@ -1,7 +1,6 @@
 package com.eleventh.socks.mapper;
 
 import com.eleventh.socks.dto.SocksDto;
-import com.eleventh.socks.exception.SocksDataException;
 import com.eleventh.socks.model.Socks;
 import org.springframework.stereotype.Component;
 
@@ -29,20 +28,5 @@ public class SocksMapper {
         return socks.stream()
                 .map(this::toSocksDto)
                 .toList();
-    }
-
-    public void validateSocksDto(SocksDto socksDto) {
-        if (socksDto == null) {
-            throw new SocksDataException("Socks is empty");
-        }
-        if (socksDto.getColor() == null) {
-            throw new SocksDataException("Color is empty");
-        }
-        if (socksDto.getCottonPart() <= 0) {
-            throw new SocksDataException("Cotton part should be greater then 0");
-        }
-        if (socksDto.getQuantity() <= 0) {
-            throw new SocksDataException("Quantity should be greater then 0");
-        }
     }
 }
