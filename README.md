@@ -12,9 +12,11 @@
 - PostgreSQL
 
 ## Тест приложения
+Приложение запушено на сервере 81.163.28.234 (порт 8080).
+Список API:
 - Поступление носков
-http://81.163.28.234:8080/api/socks/income
+POST http://81.163.28.234:8080/api/socks/income
 - Отпуск носков
-http://81.163.28.234:8080/api/socks/outcome
+POST http://81.163.28.234:8080/api/socks/outcome
 - Запрос запасов носков
-http://81.163.28.234:8080/api/socks?color=green&operation=moreThan&cottonPart=70
+GET http://81.163.28.234:8080/api/socks?color=green&operation=moreThan&cottonPart=70
